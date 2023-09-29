@@ -42,7 +42,7 @@ export class TablaComponent extends LitElement {
   static get properties() {
     return {
       datos: { type: Object, attribute: "datos" },
-      tabla: { type: String },
+      tabla: { type: Array },
     };
   }
 
