@@ -40,6 +40,9 @@ export class LoginComponent extends LitElement {
 
   constructor() {
     super();
+    this.addEventListener("keypress", function (event) {
+      if (event.key === "Enter") this._procesarDatos();
+    });
     this.usuarios = [
       {
         email: "correo@correo.com",

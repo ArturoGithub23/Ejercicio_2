@@ -5,14 +5,18 @@ export class TablaComponent extends LitElement {
   static get styles() {
     return css`
       :host {
+        max-width: 900px;
         display: flex;
         flex-wrap: wrap;
         align-items: center;
+        margin: auto;
       }
       .contenedor {
         overflow: scroll;
-        max-height: 400px;
+        max-height: 450px;
         margin: 20px;
+        border: thin solid black;
+        padding: 10px;
       }
       table {
         border-collapse: collapse;
@@ -26,13 +30,17 @@ export class TablaComponent extends LitElement {
       thead tr:first-child {
         background-color: blue;
       }
-
       th,
       td {
         border: 1px solid black;
-        padding: 8px 5px;
+        padding: 5px;
       }
-
+      .p {
+        padding: 2px 5px !important;
+      }
+      .w {
+        width: 210px;
+      }
       .hide {
         display: none;
       }
@@ -90,7 +98,7 @@ export class TablaComponent extends LitElement {
             <th>ID</th>
             <th>Escala</th>
             <th>Valor</th>
-            <th>Fecha</th>
+            <th class="w">Fecha</th>
             <th>Valor</th>
             <th>Unidad</th>
             <th>Contaminante</th>
@@ -112,7 +120,7 @@ export class TablaComponent extends LitElement {
             <td>${elemento.id}</td>
             <td>${elemento.escala}</td>
             <td>${elemento.valorIndice}</td>
-            <td>${elemento.fecha}</td>
+            <td class="p">${elemento.fecha}</td>
             <td>${elemento.valorContaminante}</td>
             <td>${elemento.unidad}</td>
             <td>${elemento.contaminante}</td>

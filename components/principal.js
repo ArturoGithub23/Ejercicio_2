@@ -2,10 +2,20 @@ import { LitElement, css, html } from "lit";
 import "./login";
 import "./obtenerDatos";
 import "./tabla";
+import "./logOut";
 
 export class PrincipalComponent extends LitElement {
   static get styles() {
-    return css``;
+    return css`
+      header {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
+      h2 {
+        text-align: center;
+      }
+    `;
   }
 
   static get properties() {
@@ -17,7 +27,7 @@ export class PrincipalComponent extends LitElement {
 
   constructor() {
     super();
-    this.login = true;
+    this.login = false;
     this.datos = {};
     this.addEventListener("obtenerDatos", (e) => {
       this._formateoDatos(e.detail.data.results);
@@ -30,11 +40,18 @@ export class PrincipalComponent extends LitElement {
 
       ${this.login
         ? html`
-            <h2>Calidad del Aire</h2>
+            <header>
+              <h2>Calidad del Aire</h2>
+              <log-out @logOut="${this._cerrarSesion}"></log-out>
+            </header>
             <tabla-component .datos="${this.datos}"></tabla-component>
           `
         : html`<login-component @login=${this._validar}></login-component>`}
     `;
+  }
+
+  _cerrarSesion(e) {
+    this.login = false;
   }
 
   _formateoDatos(datos) {
